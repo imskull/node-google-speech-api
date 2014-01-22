@@ -32,7 +32,7 @@ module.exports = function (options, callback) {
     fs.readFile(file, function (err, data) {
       if (err) return callback(err);
 
-      request.post({body: data, headers: headers, url: url},
+      request.post({body: data, headers: headers, url: url, proxy: options.proxy},
         function (err, res, body) {
           if (err) return callback(err);
           if (!!~body.toLowerCase().indexOf('html')) return callback(body);
